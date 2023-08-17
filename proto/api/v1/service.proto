@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.v1;
+
+import "api/v1/upload.proto";
+import "google/api/annotations.proto";
+
+option go_package="github.com/afikrim/learn-grpc-upload-stream/handlers/pb";
+
+service UploadStreamV1 {
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/upload"
+      body: "*"
+    };
+  }
+}

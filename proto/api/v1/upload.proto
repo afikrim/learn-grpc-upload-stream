@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package api.v1;
+
+option go_package="github.com/afikrim/learn-grpc-upload-stream/handlers/pb";
+
+enum UploadFileProcess {
+  UPLOAD_FILE_PROCESS_UNSPECIFIED = 0;
+  UPLOAD_FILE_PROCESS_STORE_FILE = 1;
+  UPLOAD_FILE_PROCESS_CREATE_METADATA = 2;
+}
+
+message UploadFileRequest {
+  string path = 1;
+  string content_type = 2;
+  string extension = 3;
+  bytes content = 4;
+  UploadFileProcess process = 5;
+}
+
+message UploadFileResponse {
+  string url = 1;
+}
